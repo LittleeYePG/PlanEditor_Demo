@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BEF62CF2-FA53-405E-818E-069A32669707}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PlanEditor</RootNamespace>
+    <AssemblyName>PlanEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.SpellChecker.v20.1.Core, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Core, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Extensions, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\DB\mstcalendar.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\mstcalendardetail.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\mstCapacityParam.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\mstcompany.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\mstitem.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\mstitemcapacity.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\mstline.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\mstlinecalendar.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\mstline_Marunix.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\mstLine_WorkTime.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\PlanEditorModel.Context.cs">
+      <DependentUpon>PlanEditorModel.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Data\DB\PlanEditorModel.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Data\DB\PlanEditorModel.Designer.cs">
+      <DependentUpon>PlanEditorModel.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Data\DB\prgdmrp.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\prgDownTimeDetail.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\prgmmrp.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\prgproductionorder.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DB\prgproductionresult.cs">
+      <DependentUpon>PlanEditorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Funcion\TimeCellGenerate.cs" />
+    <Compile Include="uControl\clsUFlyout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uControl\clsUFlyout.Designer.cs">
+      <DependentUpon>clsUFlyout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uControl\clsUFlyoutPlan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uControl\clsUFlyoutPlan.Designer.cs">
+      <DependentUpon>clsUFlyoutPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plan Edit\clsVEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plan Edit\clsVEdit.Designer.cs">
+      <DependentUpon>clsVEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plan Edit\clsVMerge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plan Edit\clsVMerge.Designer.cs">
+      <DependentUpon>clsVMerge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plan Home\clsVPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plan Home\clsVPlan.Designer.cs">
+      <DependentUpon>clsVPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plan Edit\clsVPlanEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plan Edit\clsVPlanEdit.Designer.cs">
+      <DependentUpon>clsVPlanEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FSetting\clsVEditOT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSetting\clsVEditOT.Designer.cs">
+      <DependentUpon>clsVEditOT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FSetting\clsVLineWorkTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSetting\clsVLineWorkTime.Designer.cs">
+      <DependentUpon>clsVLineWorkTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FSetting\clsVLineWorkTime_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSetting\clsVLineWorkTime_Edit.Designer.cs">
+      <DependentUpon>clsVLineWorkTime_Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FSetting\clsVSetOT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSetting\clsVSetOT.Designer.cs">
+      <DependentUpon>clsVSetOT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FSetting\clsVSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSetting\clsVSetting.Designer.cs">
+      <DependentUpon>clsVSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plan Edit\clsVShowInfomation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plan Edit\clsVShowInfomation.Designer.cs">
+      <DependentUpon>clsVShowInfomation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plan Edit\clsVSplit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plan Edit\clsVSplit.Designer.cs">
+      <DependentUpon>clsVSplit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\cMRPCapacity.cs" />
+    <Compile Include="Data\cResource.cs" />
+    <Compile Include="Data\EventData.cs" />
+    <Compile Include="Data\mstCalendarDB.cs" />
+    <Compile Include="Data\mstItemDB.cs" />
+    <Compile Include="Data\mstLineDB.cs" />
+    <Compile Include="Data\mstOT.cs" />
+    <Compile Include="Funcion\clsCFunction.cs" />
+    <Compile Include="Funcion\clsCPlan.cs" />
+    <Compile Include="Funcion\CustomSchedulerCommandFactoryService.cs" />
+    <Compile Include="Funcion\MyCustomScale.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Plan Home\SplashScreen1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plan Home\SplashScreen1.Designer.cs">
+      <DependentUpon>SplashScreen1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uControl\ucObject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uControl\ucObject.Designer.cs">
+      <DependentUpon>ucObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uControl\ucScalTime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uControl\ucScalTime.Designer.cs">
+      <DependentUpon>ucScalTime.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="uControl\clsUFlyout.resx">
+      <DependentUpon>clsUFlyout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uControl\clsUFlyoutPlan.resx">
+      <DependentUpon>clsUFlyoutPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plan Edit\clsVEdit.resx">
+      <DependentUpon>clsVEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plan Edit\clsVMerge.resx">
+      <DependentUpon>clsVMerge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plan Home\clsVPlan.resx">
+      <DependentUpon>clsVPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plan Edit\clsVPlanEdit.resx">
+      <DependentUpon>clsVPlanEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FSetting\clsVEditOT.resx">
+      <DependentUpon>clsVEditOT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FSetting\clsVLineWorkTime.resx">
+      <DependentUpon>clsVLineWorkTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FSetting\clsVLineWorkTime_Edit.resx">
+      <DependentUpon>clsVLineWorkTime_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FSetting\clsVSetOT.resx">
+      <DependentUpon>clsVSetOT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FSetting\clsVSetting.resx">
+      <DependentUpon>clsVSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plan Edit\clsVShowInfomation.resx">
+      <DependentUpon>clsVShowInfomation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plan Edit\clsVSplit.resx">
+      <DependentUpon>clsVSplit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Plan Home\SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uControl\ucObject.resx">
+      <DependentUpon>ucObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uControl\ucScalTime.resx">
+      <DependentUpon>ucScalTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Data\DB\PlanEditorModel.edmx.diagram">
+      <DependentUpon>PlanEditorModel.edmx</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image002.png" />
+    <None Include="Resources\image035.png" />
+    <None Include="Resources\open-door 128.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework">
+      <Version>6.2.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Data\DB\PlanEditorModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PlanEditorModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\DB\PlanEditorModel.Context.tt">
+      <DependentUpon>PlanEditorModel.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PlanEditorModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\DB\PlanEditorModel.tt">
+      <DependentUpon>PlanEditorModel.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PlanEditorModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

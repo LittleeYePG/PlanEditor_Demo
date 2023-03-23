@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PlanEditor.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="StartTime" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">01:30:00</Value>
+    </Setting>
+    <Setting Name="EndTime" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">22:30:00</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

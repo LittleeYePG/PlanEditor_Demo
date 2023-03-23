@@ -1,0 +1,1325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PlanEditModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="mstcalendar">
+          <Key>
+            <PropertyRef Name="CalNo" />
+          </Key>
+          <Property Name="CalNo" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CalName" Type="nvarchar" MaxLength="30" />
+          <Property Name="REMARK" Type="nvarchar" MaxLength="50" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mstcalendardetail">
+          <Key>
+            <PropertyRef Name="CalNo" />
+            <PropertyRef Name="CalDate" />
+          </Key>
+          <Property Name="CalNo" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CalDate" Type="datetime" Nullable="false" />
+          <Property Name="HolidayFlag" Type="decimal" Precision="1" Scale="0" />
+          <Property Name="REMARK" Type="nvarchar" MaxLength="50" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mstCapacityParam">
+          <Key>
+            <PropertyRef Name="CalNo" />
+          </Key>
+          <Property Name="CalNo" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="DayTime" Type="int" />
+          <Property Name="NightTime" Type="int" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Resv1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv4" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="datetime" />
+          <Property Name="Resv11" Type="datetime" />
+          <Property Name="Resv12" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mstcompany">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Addr1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Addr2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Addr3" Type="nvarchar" MaxLength="100" />
+          <Property Name="TelNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="FaxNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="CalNo" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="ZIP" Type="nvarchar" MaxLength="10" />
+          <Property Name="Resv1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv4" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="datetime" />
+          <Property Name="Resv11" Type="datetime" />
+          <Property Name="Resv12" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mstitem">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="TypeCode" />
+          </Key>
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TypeCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="100" />
+          <Property Name="AbbName" Type="nvarchar" MaxLength="25" />
+          <Property Name="ItemType" Type="nvarchar" MaxLength="1" />
+          <Property Name="LotFlag" Type="decimal" Precision="1" Scale="0" />
+          <Property Name="UnitCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="StrLoc" Type="nvarchar" MaxLength="10" />
+          <Property Name="ComLoc" Type="nvarchar" MaxLength="10" />
+          <Property Name="ProdLT" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="ReqDec" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="MRPFlag" Type="decimal" Precision="1" Scale="0" />
+          <Property Name="BOI" Type="nvarchar" MaxLength="10" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="ConsumpFlag" Type="decimal" Precision="1" Scale="0" />
+          <Property Name="DefaultSupplier" Type="nvarchar" MaxLength="10" />
+          <Property Name="DeliUnit" Type="int" />
+          <Property Name="QtyPerDeli" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="PurchaseStaff" Type="int" />
+          <Property Name="GroupItem" Type="nvarchar" MaxLength="100" />
+          <Property Name="BOMSeq" Type="int" />
+          <Property Name="ConvertUnit" Type="nvarchar" MaxLength="2" />
+          <Property Name="ConvertValue" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Resv1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv4" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="datetime" />
+          <Property Name="Resv11" Type="datetime" />
+          <Property Name="Resv12" Type="datetime" />
+          <Property Name="ExpireTerm" Type="int" />
+          <Property Name="LeadTime" Type="int" />
+          <Property Name="Boxsize" Type="int" Nullable="false" />
+          <Property Name="sBoxsize" Type="int" />
+          <Property Name="DefaultLineCode" Type="int" />
+          <Property Name="Ability" Type="int" />
+          <Property Name="ProdType" Type="int" />
+          <Property Name="MCNo" Type="varchar" MaxLength="20" />
+          <Property Name="WireColor" Type="varchar" MaxLength="20" />
+          <Property Name="Length" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="Default_LineCode" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="mstitemcapacity">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="TypeCode" />
+            <PropertyRef Name="LineCode" />
+          </Key>
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TypeCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LineCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LinePriority" Type="int" />
+          <Property Name="LotSize" Type="decimal" Precision="15" Scale="0" />
+          <Property Name="WorkingTime" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="PrepareTime" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="UpdateUser" Type="int" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="MinSize" Type="decimal" Precision="15" Scale="0" />
+          <Property Name="CreateUser" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="Resv1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv4" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="datetime" />
+          <Property Name="Resv11" Type="datetime" />
+          <Property Name="Resv12" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mstline">
+          <Key>
+            <PropertyRef Name="LineCode" />
+          </Key>
+          <Property Name="LineCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LineDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProcessCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="LineColor" Type="nvarchar" MaxLength="15" />
+          <Property Name="Capacity" Type="decimal" Precision="4" Scale="0" />
+          <Property Name="UpdateUser" Type="int" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="CreateUser" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Resv1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv4" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="datetime" />
+          <Property Name="Resv11" Type="datetime" />
+          <Property Name="Resv12" Type="datetime" />
+          <Property Name="SortSeq" Type="int" />
+          <Property Name="LocCode" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="mstline_Marunix">
+          <Key>
+            <PropertyRef Name="LineID" />
+          </Key>
+          <Property Name="LineID" Type="int" Nullable="false" />
+          <Property Name="LineName" Type="varchar" MaxLength="15" />
+          <Property Name="ProdID" Type="int" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="CreateUser" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Resv1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv4" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="datetime" />
+          <Property Name="Resv11" Type="datetime" />
+          <Property Name="Resv12" Type="datetime" />
+          <Property Name="DefStaffQtyD" Type="int" />
+          <Property Name="DefStaffQtyN" Type="int" />
+          <Property Name="DefStaffQtyHD" Type="int" />
+          <Property Name="DefStaffQtyHN" Type="int" />
+          <Property Name="WorkQty" Type="int" />
+          <Property Name="TargetD" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="TargetN" Type="decimal" Precision="18" Scale="5" />
+        </EntityType>
+        <EntityType Name="mstLine_WorkTime">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="LineCode" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LineCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="7" />
+          <Property Name="EndTime" Type="time" Precision="7" />
+          <Property Name="WorkTime" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="CreateUser" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mstlinecalendar">
+          <Key>
+            <PropertyRef Name="CalDate" />
+          </Key>
+          <Property Name="CalDate" Type="datetime" Nullable="false" />
+          <Property Name="CalText" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="prgdmrp">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="TypeCode" />
+            <PropertyRef Name="MDate" />
+          </Key>
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TypeCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MDate" Type="datetime" Nullable="false" />
+          <Property Name="COrder" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="Unofficial" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="CsmpParent" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="DeliOrder" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="Purchase" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="RecievePlan" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="ProdPlan" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="Stock" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="Net" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="CreateUser" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="int" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="prgDownTimeDetail">
+          <Key>
+            <PropertyRef Name="WorkDate" />
+            <PropertyRef Name="ShiftID" />
+            <PropertyRef Name="ProdID" />
+            <PropertyRef Name="LineID" />
+            <PropertyRef Name="DownID" />
+          </Key>
+          <Property Name="WorkDate" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="ShiftID" Type="int" Nullable="false" />
+          <Property Name="ProdID" Type="int" Nullable="false" />
+          <Property Name="LineID" Type="int" Nullable="false" />
+          <Property Name="DownID" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="DownTime" Type="int" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="prgmmrp">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="TypeCode" />
+            <PropertyRef Name="MDate" />
+          </Key>
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TypeCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MDate" Type="datetime" Nullable="false" />
+          <Property Name="COrder" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="CsmpParent" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="Purchase" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="RecievePlan" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="ProdPlan" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="Stock" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="Net" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="PurchaseOrderFlg" Type="int" />
+          <Property Name="CreateUser" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="int" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="MateOrder" Type="decimal" Precision="15" Scale="5" />
+        </EntityType>
+        <EntityType Name="prgproductionorder">
+          <Key>
+            <PropertyRef Name="ProductionCode" />
+          </Key>
+          <Property Name="ProductionCode" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="DONo" Type="nvarchar" MaxLength="25" />
+          <Property Name="PlanDate" Type="datetime" />
+          <Property Name="PlanQty" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="RemainQty" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TypeCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PlanStatus" Type="int" />
+          <Property Name="PrintF" Type="int" />
+          <Property Name="PrintDate" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="LineCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Resv1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv4" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="datetime" />
+          <Property Name="Resv11" Type="datetime" />
+          <Property Name="Resv12" Type="datetime" />
+          <Property Name="ConfirmFlag" Type="decimal" Precision="1" Scale="0" />
+          <Property Name="LotNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="POSLevel" Type="int" />
+          <Property Name="PPOSCode" Type="nvarchar" MaxLength="25" />
+          <Property Name="PreviousNo" Type="nvarchar" MaxLength="240" />
+          <Property Name="OutsourceFlag" Type="int" Nullable="false" />
+          <Property Name="ResultStartDate" Type="datetime" />
+          <Property Name="ResultStartTime" Type="nvarchar" MaxLength="6" />
+          <Property Name="CntBoxNo" Type="int" />
+          <Property Name="ResultSeqNo" Type="int" />
+          <Property Name="ResvQty" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="AbleQty" Type="decimal" Precision="18" Scale="5" />
+        </EntityType>
+        <EntityType Name="prgproductionresult">
+          <Key>
+            <PropertyRef Name="ProductionResultCode" />
+          </Key>
+          <Property Name="ProductionResultCode" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="ProductionCode" Type="nvarchar" MaxLength="12" />
+          <Property Name="DONo" Type="nvarchar" MaxLength="25" />
+          <Property Name="ResultDate" Type="datetime" />
+          <Property Name="OKQty" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="NGQty" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TypeCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LotNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="StrLoc" Type="nvarchar" MaxLength="10" />
+          <Property Name="ComLoc" Type="nvarchar" MaxLength="10" />
+          <Property Name="PlanStatus" Type="int" />
+          <Property Name="ConsumpStatus" Type="int" />
+          <Property Name="ConsumpFlag" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Resv1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resv4" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="datetime" />
+          <Property Name="Resv11" Type="datetime" />
+          <Property Name="Resv12" Type="datetime" />
+          <Property Name="DelFlag" Type="int" Nullable="false" />
+          <Property Name="ResultTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="StartBoxNo" Type="int" />
+          <Property Name="EndBoxNo" Type="int" />
+          <Property Name="ShiftID" Type="int" />
+          <Property Name="LineID" Type="int" />
+          <Property Name="Operator" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="PlanEditModelStoreContainer">
+          <EntitySet Name="mstcalendar" EntityType="Self.mstcalendar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstcalendardetail" EntityType="Self.mstcalendardetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstCapacityParam" EntityType="Self.mstCapacityParam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstcompany" EntityType="Self.mstcompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstitem" EntityType="Self.mstitem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstitemcapacity" EntityType="Self.mstitemcapacity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstline" EntityType="Self.mstline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstline_Marunix" EntityType="Self.mstline_Marunix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstLine_WorkTime" EntityType="Self.mstLine_WorkTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstlinecalendar" EntityType="Self.mstlinecalendar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prgdmrp" EntityType="Self.prgdmrp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prgDownTimeDetail" EntityType="Self.prgDownTimeDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prgmmrp" EntityType="Self.prgmmrp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prgproductionorder" EntityType="Self.prgproductionorder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prgproductionresult" EntityType="Self.prgproductionresult" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PlanEditModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="mstcalendar">
+          <Key>
+            <PropertyRef Name="CalNo" />
+          </Key>
+          <Property Name="CalNo" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CalName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="REMARK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="mstcalendardetail">
+          <Key>
+            <PropertyRef Name="CalNo" />
+            <PropertyRef Name="CalDate" />
+          </Key>
+          <Property Name="CalNo" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CalDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HolidayFlag" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="REMARK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="mstCapacityParam">
+          <Key>
+            <PropertyRef Name="CalNo" />
+          </Key>
+          <Property Name="CalNo" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="DayTime" Type="Int32" />
+          <Property Name="NightTime" Type="Int32" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="Resv1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv4" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="DateTime" Precision="3" />
+          <Property Name="Resv11" Type="DateTime" Precision="3" />
+          <Property Name="Resv12" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mstcompany">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addr1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addr2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addr3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TelNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CalNo" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Resv1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv4" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="DateTime" Precision="3" />
+          <Property Name="Resv11" Type="DateTime" Precision="3" />
+          <Property Name="Resv12" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mstitem">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="TypeCode" />
+          </Key>
+          <Property Name="ItemCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AbbName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ItemType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="LotFlag" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="UnitCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="StrLoc" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ComLoc" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ProdLT" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="ReqDec" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="MRPFlag" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="BOI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="ConsumpFlag" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="DefaultSupplier" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DeliUnit" Type="Int32" />
+          <Property Name="QtyPerDeli" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="PurchaseStaff" Type="Int32" />
+          <Property Name="GroupItem" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BOMSeq" Type="Int32" />
+          <Property Name="ConvertUnit" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ConvertValue" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Resv1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv4" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="DateTime" Precision="3" />
+          <Property Name="Resv11" Type="DateTime" Precision="3" />
+          <Property Name="Resv12" Type="DateTime" Precision="3" />
+          <Property Name="ExpireTerm" Type="Int32" />
+          <Property Name="LeadTime" Type="Int32" />
+          <Property Name="Boxsize" Type="Int32" Nullable="false" />
+          <Property Name="sBoxsize" Type="Int32" />
+          <Property Name="DefaultLineCode" Type="Int32" />
+          <Property Name="Ability" Type="Int32" />
+          <Property Name="ProdType" Type="Int32" />
+          <Property Name="MCNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WireColor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Length" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="Default_LineCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="mstitemcapacity">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="TypeCode" />
+            <PropertyRef Name="LineCode" />
+          </Key>
+          <Property Name="ItemCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LineCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LinePriority" Type="Int32" />
+          <Property Name="LotSize" Type="Decimal" Precision="15" Scale="0" />
+          <Property Name="WorkingTime" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="PrepareTime" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="UpdateUser" Type="Int32" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="MinSize" Type="Decimal" Precision="15" Scale="0" />
+          <Property Name="CreateUser" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="Resv1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv4" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="DateTime" Precision="3" />
+          <Property Name="Resv11" Type="DateTime" Precision="3" />
+          <Property Name="Resv12" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mstline">
+          <Key>
+            <PropertyRef Name="LineCode" />
+          </Key>
+          <Property Name="LineCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LineDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProcessCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LineColor" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Capacity" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="UpdateUser" Type="Int32" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="CreateUser" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Resv1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv4" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="DateTime" Precision="3" />
+          <Property Name="Resv11" Type="DateTime" Precision="3" />
+          <Property Name="Resv12" Type="DateTime" Precision="3" />
+          <Property Name="SortSeq" Type="Int32" />
+          <Property Name="LocCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="mstline_Marunix">
+          <Key>
+            <PropertyRef Name="LineID" />
+          </Key>
+          <Property Name="LineID" Type="Int32" Nullable="false" />
+          <Property Name="LineName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ProdID" Type="Int32" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="CreateUser" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="Resv1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv4" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="DateTime" Precision="3" />
+          <Property Name="Resv11" Type="DateTime" Precision="3" />
+          <Property Name="Resv12" Type="DateTime" Precision="3" />
+          <Property Name="DefStaffQtyD" Type="Int32" />
+          <Property Name="DefStaffQtyN" Type="Int32" />
+          <Property Name="DefStaffQtyHD" Type="Int32" />
+          <Property Name="DefStaffQtyHN" Type="Int32" />
+          <Property Name="WorkQty" Type="Int32" />
+          <Property Name="TargetD" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="TargetN" Type="Decimal" Precision="18" Scale="5" />
+        </EntityType>
+        <EntityType Name="mstlinecalendar">
+          <Key>
+            <PropertyRef Name="CalDate" />
+          </Key>
+          <Property Name="CalDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CalText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="prgdmrp">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="TypeCode" />
+            <PropertyRef Name="MDate" />
+          </Key>
+          <Property Name="ItemCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="COrder" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="Unofficial" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="CsmpParent" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="DeliOrder" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="Purchase" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="RecievePlan" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="ProdPlan" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="Stock" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="Net" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="CreateUser" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="prgmmrp">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="TypeCode" />
+            <PropertyRef Name="MDate" />
+          </Key>
+          <Property Name="ItemCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="COrder" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="CsmpParent" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="Purchase" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="RecievePlan" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="ProdPlan" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="Stock" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="Net" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="PurchaseOrderFlg" Type="Int32" />
+          <Property Name="CreateUser" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MateOrder" Type="Decimal" Precision="15" Scale="5" />
+        </EntityType>
+        <EntityType Name="prgproductionorder">
+          <Key>
+            <PropertyRef Name="ProductionCode" />
+          </Key>
+          <Property Name="ProductionCode" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DONo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="PlanDate" Type="DateTime" Precision="3" />
+          <Property Name="PlanQty" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="RemainQty" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ItemCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlanStatus" Type="Int32" />
+          <Property Name="PrintF" Type="Int32" />
+          <Property Name="PrintDate" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LineCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Resv1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv4" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="DateTime" Precision="3" />
+          <Property Name="Resv11" Type="DateTime" Precision="3" />
+          <Property Name="Resv12" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmFlag" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="LotNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="POSLevel" Type="Int32" />
+          <Property Name="PPOSCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="PreviousNo" Type="String" MaxLength="240" FixedLength="false" Unicode="true" />
+          <Property Name="OutsourceFlag" Type="Int32" Nullable="false" />
+          <Property Name="ResultStartDate" Type="DateTime" Precision="3" />
+          <Property Name="ResultStartTime" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CntBoxNo" Type="Int32" />
+          <Property Name="ResultSeqNo" Type="Int32" />
+          <Property Name="ResvQty" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="AbleQty" Type="Decimal" Precision="18" Scale="5" />
+        </EntityType>
+        <EntityType Name="prgproductionresult">
+          <Key>
+            <PropertyRef Name="ProductionResultCode" />
+          </Key>
+          <Property Name="ProductionResultCode" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductionCode" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="DONo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ResultDate" Type="DateTime" Precision="3" />
+          <Property Name="OKQty" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="NGQty" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ItemCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LotNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="StrLoc" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ComLoc" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PlanStatus" Type="Int32" />
+          <Property Name="ConsumpStatus" Type="Int32" />
+          <Property Name="ConsumpFlag" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="Resv1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resv4" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv5" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv6" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Resv7" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv8" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv9" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Resv10" Type="DateTime" Precision="3" />
+          <Property Name="Resv11" Type="DateTime" Precision="3" />
+          <Property Name="Resv12" Type="DateTime" Precision="3" />
+          <Property Name="DelFlag" Type="Int32" Nullable="false" />
+          <Property Name="ResultTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="StartBoxNo" Type="Int32" />
+          <Property Name="EndBoxNo" Type="Int32" />
+          <Property Name="ShiftID" Type="Int32" />
+          <Property Name="LineID" Type="Int32" />
+          <Property Name="Operator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="PlanEditorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="mstcalendars" EntityType="Self.mstcalendar" />
+          <EntitySet Name="mstcalendardetails" EntityType="Self.mstcalendardetail" />
+          <EntitySet Name="mstCapacityParams" EntityType="Self.mstCapacityParam" />
+          <EntitySet Name="mstcompanies" EntityType="Self.mstcompany" />
+          <EntitySet Name="mstitems" EntityType="Self.mstitem" />
+          <EntitySet Name="mstitemcapacities" EntityType="Self.mstitemcapacity" />
+          <EntitySet Name="mstlines" EntityType="Self.mstline" />
+          <EntitySet Name="mstline_Marunix" EntityType="Self.mstline_Marunix" />
+          <EntitySet Name="mstlinecalendars" EntityType="Self.mstlinecalendar" />
+          <EntitySet Name="prgdmrps" EntityType="Self.prgdmrp" />
+          <EntitySet Name="prgmmrps" EntityType="Self.prgmmrp" />
+          <EntitySet Name="prgproductionorders" EntityType="Self.prgproductionorder" />
+          <EntitySet Name="prgproductionresults" EntityType="Self.prgproductionresult" />
+          <EntitySet Name="prgDownTimeDetails" EntityType="PlanEditModel.prgDownTimeDetail" />
+          <EntitySet Name="mstLine_WorkTime" EntityType="PlanEditModel.mstLine_WorkTime" />
+        </EntityContainer>
+        <EntityType Name="prgDownTimeDetail">
+          <Key>
+            <PropertyRef Name="WorkDate" />
+            <PropertyRef Name="ShiftID" />
+            <PropertyRef Name="ProdID" />
+            <PropertyRef Name="LineID" />
+            <PropertyRef Name="DownID" />
+          </Key>
+          <Property Name="WorkDate" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ShiftID" Type="Int32" Nullable="false" />
+          <Property Name="ProdID" Type="Int32" Nullable="false" />
+          <Property Name="LineID" Type="Int32" Nullable="false" />
+          <Property Name="DownID" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="DownTime" Type="Int32" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mstLine_WorkTime">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="LineCode" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LineCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StartTime" Type="Time" Precision="7" />
+          <Property Name="EndTime" Type="Time" Precision="7" />
+          <Property Name="CreateUser" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="WorkTime" Type="Decimal" Precision="18" Scale="5" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PlanEditModelStoreContainer" CdmEntityContainer="PlanEditorEntities">
+          <EntitySetMapping Name="mstcalendars">
+            <EntityTypeMapping TypeName="PlanEditModel.mstcalendar">
+              <MappingFragment StoreEntitySet="mstcalendar">
+                <ScalarProperty Name="CalNo" ColumnName="CalNo" />
+                <ScalarProperty Name="CalName" ColumnName="CalName" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstcalendardetails">
+            <EntityTypeMapping TypeName="PlanEditModel.mstcalendardetail">
+              <MappingFragment StoreEntitySet="mstcalendardetail">
+                <ScalarProperty Name="CalNo" ColumnName="CalNo" />
+                <ScalarProperty Name="CalDate" ColumnName="CalDate" />
+                <ScalarProperty Name="HolidayFlag" ColumnName="HolidayFlag" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstCapacityParams">
+            <EntityTypeMapping TypeName="PlanEditModel.mstCapacityParam">
+              <MappingFragment StoreEntitySet="mstCapacityParam">
+                <ScalarProperty Name="CalNo" ColumnName="CalNo" />
+                <ScalarProperty Name="DayTime" ColumnName="DayTime" />
+                <ScalarProperty Name="NightTime" ColumnName="NightTime" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="Resv1" ColumnName="Resv1" />
+                <ScalarProperty Name="Resv2" ColumnName="Resv2" />
+                <ScalarProperty Name="Resv3" ColumnName="Resv3" />
+                <ScalarProperty Name="Resv4" ColumnName="Resv4" />
+                <ScalarProperty Name="Resv5" ColumnName="Resv5" />
+                <ScalarProperty Name="Resv6" ColumnName="Resv6" />
+                <ScalarProperty Name="Resv7" ColumnName="Resv7" />
+                <ScalarProperty Name="Resv8" ColumnName="Resv8" />
+                <ScalarProperty Name="Resv9" ColumnName="Resv9" />
+                <ScalarProperty Name="Resv10" ColumnName="Resv10" />
+                <ScalarProperty Name="Resv11" ColumnName="Resv11" />
+                <ScalarProperty Name="Resv12" ColumnName="Resv12" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstcompanies">
+            <EntityTypeMapping TypeName="PlanEditModel.mstcompany">
+              <MappingFragment StoreEntitySet="mstcompany">
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Addr1" ColumnName="Addr1" />
+                <ScalarProperty Name="Addr2" ColumnName="Addr2" />
+                <ScalarProperty Name="Addr3" ColumnName="Addr3" />
+                <ScalarProperty Name="TelNo" ColumnName="TelNo" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CalNo" ColumnName="CalNo" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="Resv1" ColumnName="Resv1" />
+                <ScalarProperty Name="Resv2" ColumnName="Resv2" />
+                <ScalarProperty Name="Resv3" ColumnName="Resv3" />
+                <ScalarProperty Name="Resv4" ColumnName="Resv4" />
+                <ScalarProperty Name="Resv5" ColumnName="Resv5" />
+                <ScalarProperty Name="Resv6" ColumnName="Resv6" />
+                <ScalarProperty Name="Resv7" ColumnName="Resv7" />
+                <ScalarProperty Name="Resv8" ColumnName="Resv8" />
+                <ScalarProperty Name="Resv9" ColumnName="Resv9" />
+                <ScalarProperty Name="Resv10" ColumnName="Resv10" />
+                <ScalarProperty Name="Resv11" ColumnName="Resv11" />
+                <ScalarProperty Name="Resv12" ColumnName="Resv12" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstitems">
+            <EntityTypeMapping TypeName="PlanEditModel.mstitem">
+              <MappingFragment StoreEntitySet="mstitem">
+                <ScalarProperty Name="Default_LineCode" ColumnName="Default_LineCode" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="AbbName" ColumnName="AbbName" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="LotFlag" ColumnName="LotFlag" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="StrLoc" ColumnName="StrLoc" />
+                <ScalarProperty Name="ComLoc" ColumnName="ComLoc" />
+                <ScalarProperty Name="ProdLT" ColumnName="ProdLT" />
+                <ScalarProperty Name="ReqDec" ColumnName="ReqDec" />
+                <ScalarProperty Name="MRPFlag" ColumnName="MRPFlag" />
+                <ScalarProperty Name="BOI" ColumnName="BOI" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="ConsumpFlag" ColumnName="ConsumpFlag" />
+                <ScalarProperty Name="DefaultSupplier" ColumnName="DefaultSupplier" />
+                <ScalarProperty Name="DeliUnit" ColumnName="DeliUnit" />
+                <ScalarProperty Name="QtyPerDeli" ColumnName="QtyPerDeli" />
+                <ScalarProperty Name="PurchaseStaff" ColumnName="PurchaseStaff" />
+                <ScalarProperty Name="GroupItem" ColumnName="GroupItem" />
+                <ScalarProperty Name="BOMSeq" ColumnName="BOMSeq" />
+                <ScalarProperty Name="ConvertUnit" ColumnName="ConvertUnit" />
+                <ScalarProperty Name="ConvertValue" ColumnName="ConvertValue" />
+                <ScalarProperty Name="Resv1" ColumnName="Resv1" />
+                <ScalarProperty Name="Resv2" ColumnName="Resv2" />
+                <ScalarProperty Name="Resv3" ColumnName="Resv3" />
+                <ScalarProperty Name="Resv4" ColumnName="Resv4" />
+                <ScalarProperty Name="Resv5" ColumnName="Resv5" />
+                <ScalarProperty Name="Resv6" ColumnName="Resv6" />
+                <ScalarProperty Name="Resv7" ColumnName="Resv7" />
+                <ScalarProperty Name="Resv8" ColumnName="Resv8" />
+                <ScalarProperty Name="Resv9" ColumnName="Resv9" />
+                <ScalarProperty Name="Resv10" ColumnName="Resv10" />
+                <ScalarProperty Name="Resv11" ColumnName="Resv11" />
+                <ScalarProperty Name="Resv12" ColumnName="Resv12" />
+                <ScalarProperty Name="ExpireTerm" ColumnName="ExpireTerm" />
+                <ScalarProperty Name="LeadTime" ColumnName="LeadTime" />
+                <ScalarProperty Name="Boxsize" ColumnName="Boxsize" />
+                <ScalarProperty Name="sBoxsize" ColumnName="sBoxsize" />
+                <ScalarProperty Name="DefaultLineCode" ColumnName="DefaultLineCode" />
+                <ScalarProperty Name="Ability" ColumnName="Ability" />
+                <ScalarProperty Name="ProdType" ColumnName="ProdType" />
+                <ScalarProperty Name="MCNo" ColumnName="MCNo" />
+                <ScalarProperty Name="WireColor" ColumnName="WireColor" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstitemcapacities">
+            <EntityTypeMapping TypeName="PlanEditModel.mstitemcapacity">
+              <MappingFragment StoreEntitySet="mstitemcapacity">
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="LineCode" ColumnName="LineCode" />
+                <ScalarProperty Name="LinePriority" ColumnName="LinePriority" />
+                <ScalarProperty Name="LotSize" ColumnName="LotSize" />
+                <ScalarProperty Name="WorkingTime" ColumnName="WorkingTime" />
+                <ScalarProperty Name="PrepareTime" ColumnName="PrepareTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="MinSize" ColumnName="MinSize" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="Resv1" ColumnName="Resv1" />
+                <ScalarProperty Name="Resv2" ColumnName="Resv2" />
+                <ScalarProperty Name="Resv3" ColumnName="Resv3" />
+                <ScalarProperty Name="Resv4" ColumnName="Resv4" />
+                <ScalarProperty Name="Resv5" ColumnName="Resv5" />
+                <ScalarProperty Name="Resv6" ColumnName="Resv6" />
+                <ScalarProperty Name="Resv7" ColumnName="Resv7" />
+                <ScalarProperty Name="Resv8" ColumnName="Resv8" />
+                <ScalarProperty Name="Resv9" ColumnName="Resv9" />
+                <ScalarProperty Name="Resv10" ColumnName="Resv10" />
+                <ScalarProperty Name="Resv11" ColumnName="Resv11" />
+                <ScalarProperty Name="Resv12" ColumnName="Resv12" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstlines">
+            <EntityTypeMapping TypeName="PlanEditModel.mstline">
+              <MappingFragment StoreEntitySet="mstline">
+                <ScalarProperty Name="LineCode" ColumnName="LineCode" />
+                <ScalarProperty Name="LineDesc" ColumnName="LineDesc" />
+                <ScalarProperty Name="ProcessCode" ColumnName="ProcessCode" />
+                <ScalarProperty Name="LineColor" ColumnName="LineColor" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Resv1" ColumnName="Resv1" />
+                <ScalarProperty Name="Resv2" ColumnName="Resv2" />
+                <ScalarProperty Name="Resv3" ColumnName="Resv3" />
+                <ScalarProperty Name="Resv4" ColumnName="Resv4" />
+                <ScalarProperty Name="Resv5" ColumnName="Resv5" />
+                <ScalarProperty Name="Resv6" ColumnName="Resv6" />
+                <ScalarProperty Name="Resv7" ColumnName="Resv7" />
+                <ScalarProperty Name="Resv8" ColumnName="Resv8" />
+                <ScalarProperty Name="Resv9" ColumnName="Resv9" />
+                <ScalarProperty Name="Resv10" ColumnName="Resv10" />
+                <ScalarProperty Name="Resv11" ColumnName="Resv11" />
+                <ScalarProperty Name="Resv12" ColumnName="Resv12" />
+                <ScalarProperty Name="SortSeq" ColumnName="SortSeq" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstline_Marunix">
+            <EntityTypeMapping TypeName="PlanEditModel.mstline_Marunix">
+              <MappingFragment StoreEntitySet="mstline_Marunix">
+                <ScalarProperty Name="TargetN" ColumnName="TargetN" />
+                <ScalarProperty Name="TargetD" ColumnName="TargetD" />
+                <ScalarProperty Name="LineID" ColumnName="LineID" />
+                <ScalarProperty Name="LineName" ColumnName="LineName" />
+                <ScalarProperty Name="ProdID" ColumnName="ProdID" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="Resv1" ColumnName="Resv1" />
+                <ScalarProperty Name="Resv2" ColumnName="Resv2" />
+                <ScalarProperty Name="Resv3" ColumnName="Resv3" />
+                <ScalarProperty Name="Resv4" ColumnName="Resv4" />
+                <ScalarProperty Name="Resv5" ColumnName="Resv5" />
+                <ScalarProperty Name="Resv6" ColumnName="Resv6" />
+                <ScalarProperty Name="Resv7" ColumnName="Resv7" />
+                <ScalarProperty Name="Resv8" ColumnName="Resv8" />
+                <ScalarProperty Name="Resv9" ColumnName="Resv9" />
+                <ScalarProperty Name="Resv10" ColumnName="Resv10" />
+                <ScalarProperty Name="Resv11" ColumnName="Resv11" />
+                <ScalarProperty Name="Resv12" ColumnName="Resv12" />
+                <ScalarProperty Name="DefStaffQtyD" ColumnName="DefStaffQtyD" />
+                <ScalarProperty Name="DefStaffQtyN" ColumnName="DefStaffQtyN" />
+                <ScalarProperty Name="DefStaffQtyHD" ColumnName="DefStaffQtyHD" />
+                <ScalarProperty Name="DefStaffQtyHN" ColumnName="DefStaffQtyHN" />
+                <ScalarProperty Name="WorkQty" ColumnName="WorkQty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstlinecalendars">
+            <EntityTypeMapping TypeName="PlanEditModel.mstlinecalendar">
+              <MappingFragment StoreEntitySet="mstlinecalendar">
+                <ScalarProperty Name="CalDate" ColumnName="CalDate" />
+                <ScalarProperty Name="CalText" ColumnName="CalText" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prgdmrps">
+            <EntityTypeMapping TypeName="PlanEditModel.prgdmrp">
+              <MappingFragment StoreEntitySet="prgdmrp">
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="MDate" ColumnName="MDate" />
+                <ScalarProperty Name="COrder" ColumnName="COrder" />
+                <ScalarProperty Name="Unofficial" ColumnName="Unofficial" />
+                <ScalarProperty Name="CsmpParent" ColumnName="CsmpParent" />
+                <ScalarProperty Name="DeliOrder" ColumnName="DeliOrder" />
+                <ScalarProperty Name="Purchase" ColumnName="Purchase" />
+                <ScalarProperty Name="RecievePlan" ColumnName="RecievePlan" />
+                <ScalarProperty Name="ProdPlan" ColumnName="ProdPlan" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Net" ColumnName="Net" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prgmmrps">
+            <EntityTypeMapping TypeName="PlanEditModel.prgmmrp">
+              <MappingFragment StoreEntitySet="prgmmrp">
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="MDate" ColumnName="MDate" />
+                <ScalarProperty Name="COrder" ColumnName="COrder" />
+                <ScalarProperty Name="CsmpParent" ColumnName="CsmpParent" />
+                <ScalarProperty Name="Purchase" ColumnName="Purchase" />
+                <ScalarProperty Name="RecievePlan" ColumnName="RecievePlan" />
+                <ScalarProperty Name="ProdPlan" ColumnName="ProdPlan" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Net" ColumnName="Net" />
+                <ScalarProperty Name="PurchaseOrderFlg" ColumnName="PurchaseOrderFlg" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="MateOrder" ColumnName="MateOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prgproductionorders">
+            <EntityTypeMapping TypeName="PlanEditModel.prgproductionorder">
+              <MappingFragment StoreEntitySet="prgproductionorder">
+                <ScalarProperty Name="AbleQty" ColumnName="AbleQty" />
+                <ScalarProperty Name="ResvQty" ColumnName="ResvQty" />
+                <ScalarProperty Name="ProductionCode" ColumnName="ProductionCode" />
+                <ScalarProperty Name="DONo" ColumnName="DONo" />
+                <ScalarProperty Name="PlanDate" ColumnName="PlanDate" />
+                <ScalarProperty Name="PlanQty" ColumnName="PlanQty" />
+                <ScalarProperty Name="RemainQty" ColumnName="RemainQty" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="PlanStatus" ColumnName="PlanStatus" />
+                <ScalarProperty Name="PrintF" ColumnName="PrintF" />
+                <ScalarProperty Name="PrintDate" ColumnName="PrintDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="LineCode" ColumnName="LineCode" />
+                <ScalarProperty Name="Resv1" ColumnName="Resv1" />
+                <ScalarProperty Name="Resv2" ColumnName="Resv2" />
+                <ScalarProperty Name="Resv3" ColumnName="Resv3" />
+                <ScalarProperty Name="Resv4" ColumnName="Resv4" />
+                <ScalarProperty Name="Resv5" ColumnName="Resv5" />
+                <ScalarProperty Name="Resv6" ColumnName="Resv6" />
+                <ScalarProperty Name="Resv7" ColumnName="Resv7" />
+                <ScalarProperty Name="Resv8" ColumnName="Resv8" />
+                <ScalarProperty Name="Resv9" ColumnName="Resv9" />
+                <ScalarProperty Name="Resv10" ColumnName="Resv10" />
+                <ScalarProperty Name="Resv11" ColumnName="Resv11" />
+                <ScalarProperty Name="Resv12" ColumnName="Resv12" />
+                <ScalarProperty Name="ConfirmFlag" ColumnName="ConfirmFlag" />
+                <ScalarProperty Name="LotNo" ColumnName="LotNo" />
+                <ScalarProperty Name="POSLevel" ColumnName="POSLevel" />
+                <ScalarProperty Name="PPOSCode" ColumnName="PPOSCode" />
+                <ScalarProperty Name="PreviousNo" ColumnName="PreviousNo" />
+                <ScalarProperty Name="OutsourceFlag" ColumnName="OutsourceFlag" />
+                <ScalarProperty Name="ResultStartDate" ColumnName="ResultStartDate" />
+                <ScalarProperty Name="ResultStartTime" ColumnName="ResultStartTime" />
+                <ScalarProperty Name="CntBoxNo" ColumnName="CntBoxNo" />
+                <ScalarProperty Name="ResultSeqNo" ColumnName="ResultSeqNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prgproductionresults">
+            <EntityTypeMapping TypeName="PlanEditModel.prgproductionresult">
+              <MappingFragment StoreEntitySet="prgproductionresult">
+                <ScalarProperty Name="ProductionResultCode" ColumnName="ProductionResultCode" />
+                <ScalarProperty Name="ProductionCode" ColumnName="ProductionCode" />
+                <ScalarProperty Name="DONo" ColumnName="DONo" />
+                <ScalarProperty Name="ResultDate" ColumnName="ResultDate" />
+                <ScalarProperty Name="OKQty" ColumnName="OKQty" />
+                <ScalarProperty Name="NGQty" ColumnName="NGQty" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="LotNo" ColumnName="LotNo" />
+                <ScalarProperty Name="StrLoc" ColumnName="StrLoc" />
+                <ScalarProperty Name="ComLoc" ColumnName="ComLoc" />
+                <ScalarProperty Name="PlanStatus" ColumnName="PlanStatus" />
+                <ScalarProperty Name="ConsumpStatus" ColumnName="ConsumpStatus" />
+                <ScalarProperty Name="ConsumpFlag" ColumnName="ConsumpFlag" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="Resv1" ColumnName="Resv1" />
+                <ScalarProperty Name="Resv2" ColumnName="Resv2" />
+                <ScalarProperty Name="Resv3" ColumnName="Resv3" />
+                <ScalarProperty Name="Resv4" ColumnName="Resv4" />
+                <ScalarProperty Name="Resv5" ColumnName="Resv5" />
+                <ScalarProperty Name="Resv6" ColumnName="Resv6" />
+                <ScalarProperty Name="Resv7" ColumnName="Resv7" />
+                <ScalarProperty Name="Resv8" ColumnName="Resv8" />
+                <ScalarProperty Name="Resv9" ColumnName="Resv9" />
+                <ScalarProperty Name="Resv10" ColumnName="Resv10" />
+                <ScalarProperty Name="Resv11" ColumnName="Resv11" />
+                <ScalarProperty Name="Resv12" ColumnName="Resv12" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="ResultTime" ColumnName="ResultTime" />
+                <ScalarProperty Name="StartBoxNo" ColumnName="StartBoxNo" />
+                <ScalarProperty Name="EndBoxNo" ColumnName="EndBoxNo" />
+                <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+                <ScalarProperty Name="LineID" ColumnName="LineID" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prgDownTimeDetails">
+            <EntityTypeMapping TypeName="PlanEditModel.prgDownTimeDetail">
+              <MappingFragment StoreEntitySet="prgDownTimeDetail">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="DownTime" ColumnName="DownTime" />
+                <ScalarProperty Name="DownID" ColumnName="DownID" />
+                <ScalarProperty Name="LineID" ColumnName="LineID" />
+                <ScalarProperty Name="ProdID" ColumnName="ProdID" />
+                <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+                <ScalarProperty Name="WorkDate" ColumnName="WorkDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstLine_WorkTime">
+            <EntityTypeMapping TypeName="PlanEditModel.mstLine_WorkTime">
+              <MappingFragment StoreEntitySet="mstLine_WorkTime">
+                <ScalarProperty Name="WorkTime" ColumnName="WorkTime" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="LineCode" ColumnName="LineCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
